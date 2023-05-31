@@ -1,8 +1,22 @@
-// 현재 백 데이터가 없기 때문에 우선 가상의 API를 사용하여 작성(로그인이 무조건 성공된다고 가정)
 interface ILoginApi {
-  is_login: boolean;
+  email: string;
+  password: string;
 }
 
-export default function loginApi(id: string, password: string) {
-  return new Promise<ILoginApi>((resolve) => resolve({ is_login: true }));
+function loginApi({ email, password }: ILoginApi) {
+  const url = `/api/auth/login?email=${email}&password=${password}`;
+
+  return fetch(url, {
+    method: 'POST',
+  })
+    .then((response) => {
+      console.log(response);
+      return response.json();
+    })
+    .then((result) => {
+      console.log(result);
+      return result;
+    });
 }
+
+export default loginApi;

@@ -11,10 +11,10 @@ function SocialLogin() {
         <Hr />
       </div>
 
-      <a href={''}>
+      <a href={'/api/auth/social/kakao'}>
         <img src={kakaoLogin} alt="카카오 로그인 버튼" className="w-[88%] m-auto mb-[2%]" />
       </a>
-      <a href={''} className="mt-[2%]">
+      <a href={'/api/auth/social/naver'} className="mt-[2%]">
         <img src={naverLogin} alt="네이버 로그인 버튼" className="w-[50%] m-auto" />
       </a>
     </div>

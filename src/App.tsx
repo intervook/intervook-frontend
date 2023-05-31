@@ -17,7 +17,9 @@ function App() {
       <TopFixedBar />
       <Routes>
         <Route path="/" element={<MainPage />} />
+        <Route path="/auth/success" element={<MainPage />} />
         <Route path="/login" element={<LoginPage />} />
+        <Route path="/auth/failure" element={<LoginPage />} />
         <Route path="/join" element={<JoinPage />} />
         <Route path="/mypage" element={<MyPage />} />
         <Route path="/writing" element={<WritingPage />} />

@@ -34,12 +34,13 @@ function Logged({ propFunction }: any) {
           onMouseOver={() => {
             setIsHover(true);
           }}
-          onMouseOut={() => {
-            setIsHover(false);
+          onMouseOut={(e: any) => {
+            if (!e.currentTarget.contains(e.relatedTarget)) {
+              setIsHover(false);
+            }
           }}
         >
           <Icons icon={faUser} onClick={moveToMyPage} />
-          {/* isHover가 true일 때만 IsHover 컴포넌트 렌더링 */}
           {isHover && <IsHover />}
         </div>
       </div>

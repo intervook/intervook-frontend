@@ -15,14 +15,17 @@ function Form() {
   const [isEmail, setIsEmail] = useState<boolean>(false);
   const [isPassword, setIsPassword] = useState<boolean>(false);
 
-  const onSubmitHandler = (e: React.FormEvent<HTMLFormElement>) => {
+  const onSubmitHandler = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    loginApi(email, password).then((result) => {
-      if (result.is_login) {
-        dispatch(authSlice.actions.login('tori'));
-        navigate('/');
-      } else navigate('/join');
-    });
+
+    let fetchedApi = await loginApi({ email, password });
+    if (fetchedApi.status === 200) {
+      dispatch(authSlice.actions.login(email));
+      navigate('/');
+    } else {
+      window.alert('등록되지 않은 이메일이거나 비밀번호가 일치하지 않습니다.');
+      navigate('/join');
+    }
   };
 
   return (
