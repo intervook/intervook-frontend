@@ -8,6 +8,8 @@ import { faFolder } from '@fortawesome/free-regular-svg-icons';
 
 import DropDownMenuIcon from './DropDownMenuIcon';
 import logoutApi from '../../../api/logoutApi';
+import { authSlice } from '../../../redux-toolkit/slices/authSlice';
+import { LOGOUT } from '../../../static/constants';
 
 function DropDownMenu() {
   const imageUrl =
