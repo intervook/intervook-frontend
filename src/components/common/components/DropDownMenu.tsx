@@ -1,13 +1,12 @@
-import { useNavigate } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 import { faHeart } from '@fortawesome/free-regular-svg-icons';
 import { faBookmark } from '@fortawesome/free-regular-svg-icons';
 import { faFolder } from '@fortawesome/free-regular-svg-icons';
 
 import DropDownMenuIcon from './DropDownMenuIcon';
-import { authSlice } from '../../../redux-toolkit/slices/authSlice';
 import logoutApi from '../../../api/logoutApi';
 
 function DropDownMenu() {
@@ -48,7 +47,7 @@ function DropDownMenu() {
             onClick={setLogoutHandler}
             className="float-right mt-[-19px] pb-[1px] pr-[3px] text-[12px] text-deepGray"
           >
-            로그아웃
+            {LOGOUT}
           </button>
         </div>
       )}
