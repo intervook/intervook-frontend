@@ -1,6 +1,6 @@
+import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { useState } from 'react';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
@@ -8,6 +8,7 @@ import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 import UnLogged from './UnLogged';
 import Logged from './Logged';
 import Hamburger from './Hamburger';
+import SearchInput from '../../main/SearchInput';
 import Logo from '../../../assets/logo/ms-icon-70x70.png';
 
 function TopFixedBar() {
@@ -31,14 +32,7 @@ function TopFixedBar() {
       <div className="sticky top-0 bg-[white] z-[999] border-b-[1px] border-lightGray">
         <div className="flex w-[80%] h-[75px] m-auto items-center justify-between">
           <img src={Logo} onClick={moveToMainPage} className="cursor-pointer text-[36px]" />
-          {isSearch ? (
-            <div className="w-[25%] h-[60%] ml-[50%]">
-              <input
-                placeholder="작성자, 키워드 등을 입력해주세요."
-                className="w-[100%] h-[100%] pl-[3%] bg-lightGray/20 focus-none"
-              />
-            </div>
-          ) : null}
+          {isSearch ? <SearchInput /> : null}
           <div className="flex ml-[0.5%] items-center">
             <FontAwesomeIcon
               icon={faMagnifyingGlass}
