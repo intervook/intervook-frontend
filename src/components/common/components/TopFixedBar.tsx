@@ -1,6 +1,6 @@
-import { useSelector } from 'react-redux';
+import { useEffect, useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { useState } from 'react';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
@@ -8,9 +8,12 @@ import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 import UnLogged from './UnLogged';
 import Logged from './Logged';
 import Hamburger from './Hamburger';
+import { authSlice } from '../../../redux-toolkit/slices/authSlice';
 import Logo from '../../../assets/logo/ms-icon-70x70.png';
+import getUser from '../../../api/getUser';
 
 function TopFixedBar() {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const [menuToggle, setMenuToggle] = useState(false);
   const [isSearch, setIsSearch] = useState(false);
@@ -25,6 +28,13 @@ function TopFixedBar() {
   const showSearch = () => {
     setIsSearch(!isSearch);
   };
+
+  useEffect(() => {
+    (async function () {
+      let { status } = await getUser();
+      if (status === 200) dispatch(authSlice.actions.login(true));
+    })();
+  }, []);
 
   return (
     <>
