@@ -7,8 +7,9 @@ import { faBookmark } from '@fortawesome/free-regular-svg-icons';
 import { faFolder } from '@fortawesome/free-regular-svg-icons';
 
 import DropDownMenuIcon from './DropDownMenuIcon';
-import { authSlice } from '../../../redux-toolkit/slices/authSlice';
 import logoutApi from '../../../api/logoutApi';
+import { authSlice } from '../../../redux-toolkit/slices/authSlice';
+import { LOGOUT } from '../../../static/constants';
 
 function DropDownMenu() {
   const imageUrl =
@@ -49,7 +50,7 @@ function DropDownMenu() {
             onClick={setLogoutHandler}
             className="float-right mt-[-19px] pb-[1px] pr-[3px] text-[12px] text-deepGray"
           >
-            로그아웃
+            {LOGOUT}
           </button>
         </div>
       )}
