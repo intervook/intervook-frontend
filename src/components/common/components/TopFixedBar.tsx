@@ -34,7 +34,6 @@ function TopFixedBar() {
       let { status, result } = await getUser();
       if (status === 200) {
         dispatch(authSlice.actions.login(result.nickname));
-        navigate('/');
       }
     })();
   }, []);
