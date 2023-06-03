@@ -1,6 +1,6 @@
-import { useNavigate } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
 import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 import { faHeart } from '@fortawesome/free-regular-svg-icons';
 import { faBookmark } from '@fortawesome/free-regular-svg-icons';
@@ -16,6 +16,7 @@ function DropDownMenu() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [showMenu, setShowMenu] = useState(true);
+  const nickname = useSelector((state: any) => state.auth.nickname);
 
   const moveToMyPage = () => {
     navigate('/myPage');
@@ -34,7 +35,7 @@ function DropDownMenu() {
           <div className="flex h-[70px] bg-[white] pl-[10px] items-center border-b-[1px] border-lightGray">
             <img src={imageUrl} className="w-[30px] h-[30px] rounded-[50%]" />
             <div className="ml-[3px] cursor-pointer" onClick={moveToMyPage}>
-              고토리
+              {nickname}
             </div>
           </div>
 
