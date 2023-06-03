@@ -31,9 +31,9 @@ function TopFixedBar() {
 
   useEffect(() => {
     (async function () {
-      let { status } = await getUser();
+      let { status, result } = await getUser();
       if (status === 200) {
-        dispatch(authSlice.actions.login(true));
+        dispatch(authSlice.actions.login(result.nickname));
         navigate('/');
       }
     })();
